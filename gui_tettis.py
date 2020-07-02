@@ -10,17 +10,20 @@ from PyQt5 import QtGui, QtWidgets, QtCore
 
 class Mainwindow(QtWidgets.QWidget):
     def __init__(self):
-        super(Mainwindow, self).__init__()
+        super().__init__()
         self.scale = 30
         self.intrval = 500
         self.st = tetris.Stage()
         self.color = my_color()
         self.margin = (4, 4)
+        self.pause = False
+        self.font = self.set_font()
+
         self.init_windos('My Tetris')
-        self.set_font()
+
 
     def set_font(self):
-        self.font = QtGui.QFont('stencil', 30)
+        return QtGui.QFont('stencil', 30)
 
     def init_windos(self, title):
         self.setWindowTitle(title)

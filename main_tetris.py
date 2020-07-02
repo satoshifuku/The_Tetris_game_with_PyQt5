@@ -8,8 +8,8 @@ from PyQt5 import QtGui, QtWidgets, QtCore
 
 class Mainwindow_tetoris(Mainwindow):
     def __init__(self):
-        super(Mainwindow_tetoris, self).__init__()
-        self.pause = False
+        super().__init__()
+
         self.st.next_block = self.st.select_block(random.randint(0, 6))
 
     def timerEvent(self, event):
@@ -92,6 +92,7 @@ class Mainwindow_tetoris(Mainwindow):
             self.update()
 
     def draw(self, event, qp):
+
         self.put_colored_block(qp)
         self.next_block(qp)
         if self.st.over is True:
