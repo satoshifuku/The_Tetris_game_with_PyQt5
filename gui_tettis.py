@@ -10,7 +10,7 @@ from PyQt5 import QtGui, QtWidgets, QtCore
 
 class Mainwindow(QtWidgets.QWidget):
     def __init__(self):
-        super(Mainwindow, self).__init__()
+        super().__init__()
         self.scale = 30
         self.intrval = 500
         self.st = tetris.Stage()

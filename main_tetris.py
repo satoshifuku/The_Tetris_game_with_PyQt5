@@ -8,8 +8,9 @@ from PyQt5 import QtGui, QtWidgets, QtCore
 
 class Mainwindow_tetoris(Mainwindow):
     def __init__(self):
-        super(Mainwindow_tetoris, self).__init__()
-        self.pause = False
+        super().__init__()
+
+        self.pause = True
         self.st.next_block = self.st.select_block(random.randint(0, 6))
 
     def timerEvent(self, event):
