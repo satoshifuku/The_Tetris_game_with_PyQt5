@@ -18,3 +18,13 @@ Run the Tetris
 Python ./main_tetris.py
 ```
 
+### how to move a block
+|Key|movement|
+|:---:|:---:|
+|ArrowDown|Down|
+|ArrowRight| Right|
+|ArrowLeft| Left|
+|w|Clockwise|
+|e|Anticlockwise|
+
+p: Toggle pause
