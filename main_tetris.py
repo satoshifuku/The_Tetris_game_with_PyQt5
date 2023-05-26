@@ -78,7 +78,7 @@ class Mainwindow_tetoris(Mainwindow):
                     self.st.rotation = 1
             elif key == QtCore.Qt.Key_E:
                 if self.st.check_movable(self.st.moving_block,
-                                         self.st.position, next_rot=1) is True:
+                                         self.st.position, next_rot=3) is True:
                     self.st.rotation = 3
 
         if can_move is True:
