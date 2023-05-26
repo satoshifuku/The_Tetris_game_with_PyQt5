@@ -26,6 +26,7 @@ class Stage(object):
         self.flag_move = False
         self.over = False
 
+
     def init_posture(self):
         '''
         ブロックは4x4のリストで表現されている
@@ -34,6 +35,7 @@ class Stage(object):
         '''
         self.position = np.array([4, -2])
         self.rotation = 0
+
 
     def generate_wall(self):
         for col in range(self.field[0]):
@@ -44,11 +46,14 @@ class Stage(object):
             self.board[row][self.field[0] - 1] = -1
             self.board[row][0] = -1
 
+
     def select_block(self, block_num):
         return np.array(self.bl.list[block_num])
 
+
     def save_board(self):
         self.fixed_board = np.array(self.board)
+
 
     def update_block(self):
         self.past_board = np.array(self.board)
@@ -61,19 +66,23 @@ class Stage(object):
                 if self.moving_block[row][col] != 0:
                     self.board[y + row][x + col] = self.moving_block[row][col]
 
+
     def clear_block(self, x, y):
         for col in range(4):
             for row in range(4):
                 self.board[y + row][x + col] = 0
+
 
     def rotate(self, block, rotation):
         for count in range(rotation):
             block = np.copy(self.bl.rotation(block))
         return block
 
+
     def move_block(self, x, y):
         self.position = [x, y]
         self.update_block()
+
 
     def check_movable(self, block, position, next_x=0, next_y=0, next_rot=0):
         x = position[0] + next_x
@@ -86,13 +95,16 @@ class Stage(object):
                     return False
         return True
 
+
     def check_rotatable(self):
         block = np.array(self.bl.rotation(self.moving_block))
         return self.check_movable(block, self.position, 0, 0)
 
+
     def get_moving_block_num(self):
         num = self.moving_block[self.moving_block != 0][0]
         return int(num)
+
 
     def remove_lined_blocks(self):
         for row in range(1, self.field[1]-1):
@@ -101,6 +113,7 @@ class Stage(object):
                 self.fixed_board = np.delete(self.fixed_board, row, 0)
                 self.fixed_board = np.insert(self.fixed_board, 1, 0, 0)
                 self.fixed_board[1][0] = self.fixed_board[1][-1] = -1
+
 
     def judge_gameover(self):
         line = self.fixed_board[1][4:-4]

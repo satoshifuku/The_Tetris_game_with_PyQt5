@@ -25,6 +25,7 @@ class Mainwindow(QtWidgets.QWidget):
     def set_font(self):
         return QtGui.QFont('stencil', 30)
 
+
     def init_windos(self, title):
         self.setWindowTitle(title)
         self.setFixedSize(self.scale * (self.st.field[0] + 2 * self.margin[0]),
@@ -32,6 +33,7 @@ class Mainwindow(QtWidgets.QWidget):
         self.timerId = self.startTimer(self.intrval)
         self.timerId_effect = self.startTimer(0.1*self.intrval)
         self.show()
+
 
     def paintEvent(self, event):
         '''
@@ -43,14 +45,17 @@ class Mainwindow(QtWidgets.QWidget):
         self.draw(event, qp)
         qp.end()
 
+
     def draw(self, event, qp):
         self.put_colored_block(qp)
+
 
     def put_colored_block(self, qp):
         for row in range(self.st.field[1]):
             for col in range(self.st.field[0]):
                 color_num = int(self.st.board[row][col]) + 1
                 self.draw_squar(qp, self.color.list[color_num], col, row)
+
 
     def timerEvent(self, event):
         '''
@@ -59,8 +64,10 @@ class Mainwindow(QtWidgets.QWidget):
         if event.timerId() == self.timerId:
             self.update()
 
+
     def keyPressEvent(self, event):
         key = event.key()
+
 
     def draw_squar(self, qp, color, col, row):
         x = self.scale * (col + self.margin[0])
@@ -76,6 +83,7 @@ class Mainwindow(QtWidgets.QWidget):
         qp.drawLine(x + unit, y + unit, x + unit, y)
         qp.drawLine(x + unit, y + unit, x, y + unit)
 
+
     def draw_text(self, event, qp, text):
         qp.setPen(self.color.list[9])
         qp.setFont(self.font)
@@ -88,6 +96,7 @@ def main():
     window = Mainwindow()
     painter = QtGui.QPainter()
     app.exec_()
+
 
 if __name__ == '__main__':
     main()

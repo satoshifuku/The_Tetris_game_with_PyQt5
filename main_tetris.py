@@ -1,3 +1,5 @@
+# -*- config: utf-8 -*-
+
 import sys
 import numpy as np
 import random
@@ -11,6 +13,7 @@ class Mainwindow_tetoris(Mainwindow):
         super().__init__()
 
         self.st.next_block = self.st.select_block(random.randint(0, 6))
+
 
     def timerEvent(self, event):
         '''
@@ -78,7 +81,6 @@ class Mainwindow_tetoris(Mainwindow):
                                          self.st.position, next_rot=1) is True:
                     self.st.rotation = 3
 
-
         if can_move is True:
             self.st.move_block(self.st.position[0], self.st.position[1])
             can_move = False
@@ -91,6 +93,7 @@ class Mainwindow_tetoris(Mainwindow):
             self.st.rotation = 0
             self.update()
 
+
     def draw(self, event, qp):
 
         self.put_colored_block(qp)
@@ -99,6 +102,7 @@ class Mainwindow_tetoris(Mainwindow):
             self.draw_text(event, qp, u'gameover')
         elif self.pause is True:
             self.draw_text(event, qp, u'PAUSE')
+
 
     def next_block(self, qp):
         for row in range(4):
@@ -114,6 +118,7 @@ def main():
     window = Mainwindow_tetoris()
     painter = QtGui.QPainter()
     app.exec_()
+
 
 if __name__ == '__main__':
     main()

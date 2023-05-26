@@ -47,21 +47,21 @@ class Block(object):
                             [0, 0, 0, 0]])
         self.list.append(block_i)
 
+
     def rotation(self, mat):
         tmp = np.identity(4)
         for row in range(4):
             for col in range(4):
                 # clockwise
                 tmp[col][row] = mat[3-row][col]
-                    # anticlockwise
-                    # tmp[col][row] = mat[row][3-col]
+
         return tmp
 
 
 def main():
 
     bl = Block()
-    mat = np.copy(bl.list[4])
+    mat = np.copy(bl.list[3])
     for count in range(3):
         mat = np.copy(bl.rotation(mat))
     print(mat)
